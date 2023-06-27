@@ -23,6 +23,14 @@ import javax.swing.JScrollBar;
 import javax.swing.JSeparator;
 import javax.swing.JTextPane;
 import javax.swing.DropMode;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JToolBar;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JMenuItem;
 
 public class TelaPrincipal extends JFrame {
 
@@ -61,7 +69,6 @@ public class TelaPrincipal extends JFrame {
 	private JTextField textField_14;
 	private JTextField textField_15;
 	private JButton btnNewButton_1;
-	private JList list_1;
 	private JLabel lblSelecioneOCurso;
 	private JLabel lblNewLabel_2;
 	private JTextField textField_16;
@@ -70,6 +77,20 @@ public class TelaPrincipal extends JFrame {
 	private JButton btnNewButton_2;
 	private JLabel lblNewLabel_2_2;
 	private JTextField textField_18;
+	private JTextField textField_19;
+	private JTextField textField_20;
+	private JTextField textField_21;
+	private JScrollPane scrollPane_3;
+	private JTable table;
+	private JScrollPane scrollPane_4;
+	private JLabel lblSelecioneOCurso_2;
+	private JList list_3;
+	private JScrollPane scrollPane_5;
+	private JLabel lblSelecioneOCurso_3;
+	private JLabel lblNewLabel;
+	private JScrollPane scrollPane_1;
+	private JLabel lblNewLabel_7;
+	private JTable table_1;
 
 	/**
 	 * Launch the application.
@@ -91,7 +112,7 @@ public class TelaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaPrincipal() {
-		setTitle("Escola de Cursos do Bolinha");
+		setTitle("Escola de Cursos do Tio Sebas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 751, 601);
 		contentPane = new JPanel();
@@ -262,14 +283,8 @@ public class TelaPrincipal extends JFrame {
 
 			  
 		}});
-		btnNewButton.setBounds(114, 354, 116, 23);
+		btnNewButton.setBounds(102, 429, 116, 23);
 		panel_aluno.add(btnNewButton);
-		
-		JLabel lblNewLabel = new JLabel("Selecione o Curso");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(285, 73, 129, 14);
-		panel_aluno.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Cadastrar Aluno");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -278,7 +293,7 @@ public class TelaPrincipal extends JFrame {
 		panel_aluno.add(lblNewLabel_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(285, 97, 137, 127);
+		scrollPane.setBounds(86, 344, 168, 74);
 		panel_aluno.add(scrollPane);
 		
 		JList list = new JList();
@@ -295,8 +310,59 @@ public class TelaPrincipal extends JFrame {
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(463, 0, 2, 463);
+		separator.setBounds(278, 0, 2, 463);
 		panel_aluno.add(separator);
+		
+		lblSelecioneOCurso_3 = new JLabel("Selecione");
+		lblSelecioneOCurso_3.setHorizontalAlignment(SwingConstants.LEFT);
+		lblSelecioneOCurso_3.setBounds(10, 357, 143, 14);
+		panel_aluno.add(lblSelecioneOCurso_3);
+		
+		lblNewLabel = new JLabel("o Curso:");
+		lblNewLabel.setToolTipText("");
+		lblNewLabel.setBounds(10, 374, 46, 14);
+		panel_aluno.add(lblNewLabel);
+		
+		scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(290, 103, 410, 349);
+		panel_aluno.add(scrollPane_1);
+		
+		table_1 = new JTable();
+		table_1.setShowHorizontalLines(false);
+		table_1.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, "", null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+			},
+			new String[] {
+				"Nome", "Sobrenome", "Curso", "Matricula", "CPF"
+			}
+		));
+		scrollPane_1.setViewportView(table_1);
+		
+		lblNewLabel_7 = new JLabel("Tabela de Alunos");
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel_7.setBounds(441, 57, 170, 14);
+		panel_aluno.add(lblNewLabel_7);
 		
 		JPanel panel_professor = new JPanel();
 		tabbedPane.addTab("Professor", null, panel_professor, null);
@@ -309,7 +375,7 @@ public class TelaPrincipal extends JFrame {
 		
 		lblSobrenome_1 = new JLabel("Sobrenome:");
 		lblSobrenome_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblSobrenome_1.setBounds(10, 127, 66, 14);
+		lblSobrenome_1.setBounds(10, 127, 76, 14);
 		panel_professor.add(lblSobrenome_1);
 		
 		lblCpf_1 = new JLabel("CPF:");
@@ -319,7 +385,7 @@ public class TelaPrincipal extends JFrame {
 		
 		lblCelular_1 = new JLabel("Celular:");
 		lblCelular_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCelular_1.setBounds(10, 189, 46, 14);
+		lblCelular_1.setBounds(10, 189, 66, 14);
 		panel_professor.add(lblCelular_1);
 		
 		lblEmail_1 = new JLabel("E-mail:");
@@ -458,7 +524,7 @@ public class TelaPrincipal extends JFrame {
 		}});
 			
 	
-		btnNewButton_1.setBounds(114, 351, 116, 23);
+		btnNewButton_1.setBounds(114, 389, 116, 23);
 		panel_professor.add(btnNewButton_1);
 		
 		lblSelecioneOCurso = new JLabel("Selecione o Curso");
@@ -466,7 +532,7 @@ public class TelaPrincipal extends JFrame {
 		lblSelecioneOCurso.setVerticalAlignment(SwingConstants.TOP);
 		lblSelecioneOCurso.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelecioneOCurso.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblSelecioneOCurso.setBounds(285, 74, 129, 20);
+		lblSelecioneOCurso.setBounds(266, 75, 123, 20);
 		panel_professor.add(lblSelecioneOCurso);
 		
 		lblNewLabel_2 = new JLabel("Cadastrar Professor");
@@ -475,21 +541,9 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_2.setBounds(86, 54, 170, 14);
 		panel_professor.add(lblNewLabel_2);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(281, 96, 137, 127);
-		panel_professor.add(scrollPane_1);
-		
-		list_1 = new JList();
-		list_1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"q", "w", "e", "r", "t", "y", "yu", "u", "i", "o", "po"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		scrollPane_1.setViewportView(list_1);
+		JMenuItem menuItem = new JMenuItem("New menu item");
+		menuItem.setBounds(96, 341, 137, 26);
+		panel_professor.add(menuItem);
 		
 		JPanel panel_curso = new JPanel();
 		tabbedPane.addTab("Cursos", null, panel_curso, null);
@@ -516,7 +570,7 @@ public class TelaPrincipal extends JFrame {
 		panel_curso.add(lblNewLabel_3);
 		
 		JLabel lblDurao = new JLabel("Duração:");
-		lblDurao.setBounds(10, 140, 46, 14);
+		lblDurao.setBounds(10, 140, 58, 14);
 		panel_curso.add(lblDurao);
 		
 		lblDescrio = new JLabel("Descrição:");
@@ -539,18 +593,22 @@ public class TelaPrincipal extends JFrame {
 		btnNewButton_2.setBounds(122, 251, 106, 23);
 		panel_curso.add(btnNewButton_2);
 		
+		scrollPane_5 = new JScrollPane();
+		scrollPane_5.setBounds(343, 63, 263, 338);
+		panel_curso.add(scrollPane_5);
+		
 		JPanel panel_turma = new JPanel();
 		tabbedPane.addTab("Turmas", null, panel_turma, null);
 		panel_turma.setLayout(null);
 		
 		lblNewLabel_2_2 = new JLabel("Cadastrar Turma");
-		lblNewLabel_2_2.setBounds(78, 31, 160, 19);
+		lblNewLabel_2_2.setBounds(113, 11, 160, 19);
 		lblNewLabel_2_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2_2.setFont(new Font("Tahoma", Font.BOLD, 15));
 		panel_turma.add(lblNewLabel_2_2);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(212, 95, 132, 137);
+		scrollPane_2.setBounds(235, 115, 132, 83);
 		panel_turma.add(scrollPane_2);
 		
 		JList list_2 = new JList();
@@ -570,25 +628,152 @@ public class TelaPrincipal extends JFrame {
 		lblSelecioneOCurso_1.setToolTipText("");
 		lblSelecioneOCurso_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelecioneOCurso_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblSelecioneOCurso_1.setBounds(212, 77, 132, 20);
+		lblSelecioneOCurso_1.setBounds(235, 95, 132, 20);
 		panel_turma.add(lblSelecioneOCurso_1);
 		
 		JButton btnNewButton_3 = new JButton("Cadastrar");
-		btnNewButton_3.setBounds(91, 209, 89, 23);
+		btnNewButton_3.setBounds(149, 209, 118, 23);
 		panel_turma.add(btnNewButton_3);
 		
 		textField_18 = new JTextField();
-		textField_18.setBounds(91, 140, 86, 20);
+		textField_18.setBounds(88, 61, 86, 20);
 		panel_turma.add(textField_18);
 		textField_18.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("N° de Alunos:");
-		lblNewLabel_4.setBounds(10, 143, 71, 17);
+		lblNewLabel_4.setBounds(10, 61, 86, 17);
 		panel_turma.add(lblNewLabel_4);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setOrientation(SwingConstants.VERTICAL);
+		separator_1.setBounds(389, 0, 2, 243);
+		panel_turma.add(separator_1);
+		
+		JLabel lblNewLabel_2_2_1 = new JLabel("Cadastrar Sala");
+		lblNewLabel_2_2_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2_2_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel_2_2_1.setBounds(478, 11, 160, 19);
+		panel_turma.add(lblNewLabel_2_2_1);
+		
+		textField_19 = new JTextField();
+		textField_19.setBounds(502, 94, 118, 20);
+		panel_turma.add(textField_19);
+		textField_19.setColumns(10);
+		
+		textField_20 = new JTextField();
+		textField_20.setColumns(10);
+		textField_20.setBounds(502, 125, 118, 20);
+		panel_turma.add(textField_20);
+		
+		textField_21 = new JTextField();
+		textField_21.setColumns(10);
+		textField_21.setBounds(502, 156, 118, 20);
+		panel_turma.add(textField_21);
+		
+		JLabel lblNewLabel_5 = new JLabel("Andar:");
+		lblNewLabel_5.setBounds(421, 97, 71, 14);
+		panel_turma.add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_5_1 = new JLabel("Corredor:");
+		lblNewLabel_5_1.setBounds(421, 128, 71, 14);
+		panel_turma.add(lblNewLabel_5_1);
+		
+		JLabel lblNewLabel_5_2 = new JLabel("Sala:");
+		lblNewLabel_5_2.setBounds(421, 159, 71, 14);
+		panel_turma.add(lblNewLabel_5_2);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(0, 242, 700, 14);
+		panel_turma.add(separator_2);
+		
+		JButton btnNewButton_3_1 = new JButton("Cadastrar");
+		btnNewButton_3_1.setBounds(502, 209, 118, 23);
+		panel_turma.add(btnNewButton_3_1);
+		
+		JButton btnNewButton_4 = new JButton("Listar");
+		btnNewButton_4.setBounds(103, 268, 96, 23);
+		panel_turma.add(btnNewButton_4);
+		
+		JLabel lblNewLabel_6 = new JLabel("Listar Turmas >");
+		lblNewLabel_6.setBounds(10, 272, 96, 14);
+		panel_turma.add(lblNewLabel_6);
+		
+		scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(229, 265, 327, 176);
+		panel_turma.add(scrollPane_3);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+			},
+			new String[] {
+				"Sala", "Qtd Alunos", "Curso", "Id Turma"
+			}
+		));
+		scrollPane_3.setViewportView(table);
+		
+		scrollPane_4 = new JScrollPane();
+		scrollPane_4.setBounds(67, 115, 132, 83);
+		panel_turma.add(scrollPane_4);
+		
+		list_3 = new JList();
+		list_3.setModel(new AbstractListModel() {
+			String[] values = new String[] {"a", "b", "c", "d", "e", "f", "g", "h", "i"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		scrollPane_4.setViewportView(list_3);
+		
+		lblSelecioneOCurso_2 = new JLabel("Selecione a Sala");
+		lblSelecioneOCurso_2.setVerticalAlignment(SwingConstants.TOP);
+		lblSelecioneOCurso_2.setToolTipText("");
+		lblSelecioneOCurso_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelecioneOCurso_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblSelecioneOCurso_2.setBounds(67, 95, 132, 20);
+		panel_turma.add(lblSelecioneOCurso_2);
 		//painel aluno fim
 		
 		
 		
 		
+	}
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
 	}
 }
