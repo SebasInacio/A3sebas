@@ -5,7 +5,7 @@ public class Aluno {
 	String nome, sobrenome,  cpf, celular, email, rua, bairro, numeroCasa;
 	int matricula;
 	
-	public Aluno() {
+	public Aluno(String nome, String sobrenome, String cpf, String celular, String email, String bairro, String rua, String numero) {
 		super();
 	}
 	public Aluno(String nome, String sobrenome, String cpf) {

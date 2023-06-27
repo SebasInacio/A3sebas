@@ -187,6 +187,80 @@ public class TelaPrincipal extends JFrame {
 		panel_aluno.add(lblNumero);
 		
 		btnNewButton = new JButton("Cadastrar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String nome = textField.getText();
+			    String sobrenome = textField_1.getText();
+			    String cpf = textField_2.getText();
+			    String celular = textField_3.getText();
+			    String email = textField_4.getText();
+			    String bairro = textField_5.getText();
+			    String rua = textField_6.getText();
+			    String numero = textField_7.getText();
+				
+			 // Verificar se todos os campos estão preenchidos
+		        if (nome.isBlank() || sobrenome.isBlank() || cpf.isBlank() || celular.isBlank() || email.isBlank()
+		                || bairro.isBlank() || rua.isBlank() || numero.isBlank()) {
+		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Preencha todos os campos!");
+		        } else if (!validarCPF(cpf)) { // Verificar formato do CPF
+		            JOptionPane.showMessageDialog(TelaPrincipal.this, "CPF inválido!");
+		        } else if (!validarEmail(email)) { // Verificar formato do email
+		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Email inválido!");
+		        } else if (!validarCelular(celular)) { // Verificar formato do email
+			            JOptionPane.showMessageDialog(TelaPrincipal.this, "Celular inválido!");
+		        } else {
+		            // Realizar o cadastro do aluno no sistema
+		            Aluno aluno = new Aluno(nome, sobrenome, cpf, celular, email, bairro, rua, numero);
+		            // Código para cadastrar o aluno
+
+		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Aluno cadastrado com sucesso!");
+		        }
+		    }
+
+			private boolean validarCelular(String celular) {
+				// Remover caracteres especiais e espaços em branco
+			    celular = celular.replaceAll("[^0-9]", "");
+
+			    // Verificar se o telefone tem 8 ou 9 dígitos
+			    if (celular.length() != 8 && celular.length() != 9) {
+			        return false;
+			    }
+
+			    // Verificar se todos os dígitos são iguais (telefone inválido)
+			    if (celular.matches("(\\d)\\1{7,8}")) {
+			        return false;
+			    }
+
+			    // Verificar o formato do telefone
+			    return celular.matches("\\d{8,9}");
+			
+			}
+
+			private boolean validarEmail(String email) {
+			    // Verificar o formato do email usando expressão regular
+			    String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+			    return email.matches(regex);
+			
+			}
+
+			private boolean validarCPF(String cpf) {
+				// Remover caracteres especiais e espaços em branco
+			    cpf = cpf.replaceAll("[^0-9]", "");
+
+			    // Verificar se o CPF tem 11 dígitos
+			    if (cpf.length() != 11) {
+			        return false;
+			    }
+
+			    // Verificar se todos os dígitos são iguais (CPF inválido)
+			    if (cpf.matches("(\\d)\\1{10}")) {
+			        return false;
+			    }
+				return rootPaneCheckingEnabled;
+
+			  
+		}});
 		btnNewButton.setBounds(114, 354, 116, 23);
 		panel_aluno.add(btnNewButton);
 		
@@ -308,6 +382,81 @@ public class TelaPrincipal extends JFrame {
 		panel_professor.add(textField_15);
 		
 		btnNewButton_1 = new JButton("Cadastrar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nome = textField_15.getText();
+			    String sobrenome = textField_14.getText();
+			    String cpf = textField_13.getText();
+			    String celular = textField_12.getText();
+			    String email = textField_11.getText();
+			    String bairro = textField_10.getText();
+			    String rua = textField_9.getText();
+			    String numero = textField_8.getText();
+				
+			 // Verificar se todos os campos estão preenchidos
+		        if (nome.isBlank() || sobrenome.isBlank() || cpf.isBlank() || celular.isBlank() || email.isBlank()
+		                || bairro.isBlank() || rua.isBlank() || numero.isBlank()) {
+		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Preencha todos os campos!");
+		        } else if (!validarCPF(cpf)) { // Verificar formato do CPF
+		            JOptionPane.showMessageDialog(TelaPrincipal.this, "CPF inválido!");
+		        } else if (!validarEmail(email)) { // Verificar formato do email
+		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Email inválido!");
+		        } else if (!validarCelular(celular)) { // Verificar formato do email
+			            JOptionPane.showMessageDialog(TelaPrincipal.this, "Celular inválido!");
+		        } else {
+		            // Realizar o cadastro do aluno no sistema
+		            Professor professor = new Professor(nome, sobrenome, cpf, celular, email, bairro, rua, numero);
+		            // Código para cadastrar o professor
+
+		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Professor cadastrado com sucesso!");
+		        }
+		    }
+
+			private boolean validarCelular(String celular) {
+				// Remover caracteres especiais e espaços em branco
+			    celular = celular.replaceAll("[^0-9]", "");
+
+			    // Verificar se o telefone tem 8 ou 9 dígitos
+			    if (celular.length() != 8 && celular.length() != 9) {
+			        return false;
+			    }
+
+			    // Verificar se todos os dígitos são iguais (telefone inválido)
+			    if (celular.matches("(\\d)\\1{7,8}")) {
+			        return false;
+			    }
+
+			    // Verificar o formato do telefone
+			    return celular.matches("\\d{8,9}");
+			
+			}
+
+			private boolean validarEmail(String email) {
+			    // Verificar o formato do email usando expressão regular
+			    String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+			    return email.matches(regex);
+			
+			}
+
+			private boolean validarCPF(String cpf) {
+				// Remover caracteres especiais e espaços em branco
+			    cpf = cpf.replaceAll("[^0-9]", "");
+
+			    // Verificar se o CPF tem 11 dígitos
+			    if (cpf.length() != 11) {
+			        return false;
+			    }
+
+			    // Verificar se todos os dígitos são iguais (CPF inválido)
+			    if (cpf.matches("(\\d)\\1{10}")) {
+			        return false;
+			    }
+				return rootPaneCheckingEnabled;
+
+			  
+		}});
+			
+	
 		btnNewButton_1.setBounds(114, 351, 116, 23);
 		panel_professor.add(btnNewButton_1);
 		
