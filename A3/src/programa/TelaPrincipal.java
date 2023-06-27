@@ -69,6 +69,7 @@ public class TelaPrincipal extends JFrame {
 	private JLabel lblDescrio;
 	private JButton btnNewButton_2;
 	private JLabel lblNewLabel_2_2;
+	private JTextField textField_18;
 
 	/**
 	 * Launch the application.
@@ -490,16 +491,6 @@ public class TelaPrincipal extends JFrame {
 		});
 		scrollPane_1.setViewportView(list_1);
 		
-		JPanel panel_turma = new JPanel();
-		tabbedPane.addTab("Turmas", null, panel_turma, null);
-		panel_turma.setLayout(null);
-		
-		lblNewLabel_2_2 = new JLabel("Cadastrar Turma");
-		lblNewLabel_2_2.setBounds(78, 31, 160, 19);
-		lblNewLabel_2_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		panel_turma.add(lblNewLabel_2_2);
-		
 		JPanel panel_curso = new JPanel();
 		tabbedPane.addTab("Cursos", null, panel_curso, null);
 		panel_curso.setLayout(null);
@@ -547,6 +538,53 @@ public class TelaPrincipal extends JFrame {
 		});
 		btnNewButton_2.setBounds(122, 251, 106, 23);
 		panel_curso.add(btnNewButton_2);
+		
+		JPanel panel_turma = new JPanel();
+		tabbedPane.addTab("Turmas", null, panel_turma, null);
+		panel_turma.setLayout(null);
+		
+		lblNewLabel_2_2 = new JLabel("Cadastrar Turma");
+		lblNewLabel_2_2.setBounds(78, 31, 160, 19);
+		lblNewLabel_2_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+		panel_turma.add(lblNewLabel_2_2);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(212, 95, 132, 137);
+		panel_turma.add(scrollPane_2);
+		
+		JList list_2 = new JList();
+		list_2.setModel(new AbstractListModel() {
+			String[] values = new String[] {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		scrollPane_2.setViewportView(list_2);
+		
+		JLabel lblSelecioneOCurso_1 = new JLabel("Selecione o Curso");
+		lblSelecioneOCurso_1.setVerticalAlignment(SwingConstants.TOP);
+		lblSelecioneOCurso_1.setToolTipText("");
+		lblSelecioneOCurso_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelecioneOCurso_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblSelecioneOCurso_1.setBounds(212, 77, 132, 20);
+		panel_turma.add(lblSelecioneOCurso_1);
+		
+		JButton btnNewButton_3 = new JButton("Cadastrar");
+		btnNewButton_3.setBounds(91, 209, 89, 23);
+		panel_turma.add(btnNewButton_3);
+		
+		textField_18 = new JTextField();
+		textField_18.setBounds(91, 140, 86, 20);
+		panel_turma.add(textField_18);
+		textField_18.setColumns(10);
+		
+		JLabel lblNewLabel_4 = new JLabel("N° de Alunos:");
+		lblNewLabel_4.setBounds(10, 143, 71, 17);
+		panel_turma.add(lblNewLabel_4);
 		//painel aluno fim
 		
 		
