@@ -4,14 +4,14 @@ package dto;
 public class CursoDTO {
 
 	
-	int codCurso;
+	int idCurso;
 	String nome, descricao, cargaHoraria;
 	int contador = 1;
 	
 	
 	public CursoDTO( String cargaHoraria, String nome, String descricao) {
 		this.cargaHoraria = cargaHoraria;
-		this.codCurso = contador;
+		this.idCurso = contador;
 		this.descricao = descricao;
 		this.nome = nome;
 		contador++;
@@ -25,10 +25,10 @@ public class CursoDTO {
 	}
 	
 	public int getCodCurso() {
-		return codCurso;
+		return idCurso;
 	}
 	public void setCodCurso(int codCurso) {
-		this.codCurso = codCurso;
+		this.idCurso = codCurso;
 	}
 	public String getCargaHoraria() {
 		return cargaHoraria;
