@@ -238,6 +238,17 @@ public class TelaPrincipal extends JFrame {
 
 		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Aluno cadastrado com sucesso!");
 		        }
+		        
+		     // Limpa os campos após o cadastro
+	            textField.setText("");
+	            textField_1.setText("");
+	            textField_2.setText("");
+	            textField_3.setText("");
+	            textField_4.setText("");
+	            textField_5.setText("");
+	            textField_6.setText("");
+	            textField_7.setText("");
+	        
 		    }
 
 			private boolean validarCelular(String celular) {
@@ -328,6 +339,7 @@ public class TelaPrincipal extends JFrame {
 		panel_aluno.add(scrollPane_1);
 		
 		table_1 = new JTable();
+		table_1.setEnabled(false);
 		table_1.setShowHorizontalLines(false);
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -476,6 +488,15 @@ public class TelaPrincipal extends JFrame {
 		            // Código para cadastrar o professor
 
 		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Professor cadastrado com sucesso!");
+		            
+		            textField_15.setText("");
+		            textField_14.setText("");
+		            textField_13.setText("");
+		            textField_12.setText("");
+		            textField_11.setText("");
+		            textField_10.setText("");
+		            textField_9.setText("");
+		            textField_8.setText("");
 		        }
 		    }
 
@@ -519,7 +540,6 @@ public class TelaPrincipal extends JFrame {
 			        return false;
 			    }
 				return rootPaneCheckingEnabled;
-
 			  
 		}});
 			
@@ -583,13 +603,35 @@ public class TelaPrincipal extends JFrame {
 		
 		btnNewButton_2 = new JButton("Cadastrar");
 		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			
+				public void actionPerformed(ActionEvent e) {
+					 String nome = textField_16.getText();
+				        String duracao = textField_17.getText();
+				        String descricao = textPane.getText();
+				    
+				        
+				        if (nome.isEmpty() || duracao.isEmpty() || descricao.isEmpty()) {
+				            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
+				        } else {
+				            // Aqui você pode realizar a lógica de cadastro do curso
+				            Curso curso = new Curso(nome, duracao, descricao);
+				            // Código adicional para salvar o curso ou realizar outras operações necessárias
+				            
+				            JOptionPane.showMessageDialog(null, "Curso cadastrado com sucesso!");
+				            
+				            // Limpa os campos após o cadastro
+				            textField_16.setText("");
+				            textField_17.setText("");
+				            textPane.setText("");
+				            list.clearSelection();
+				        }
+				    }
+				});
 				
 				
 				
 				
-			}
-		});
+			
 		btnNewButton_2.setBounds(122, 251, 106, 23);
 		panel_curso.add(btnNewButton_2);
 		
@@ -632,6 +674,46 @@ public class TelaPrincipal extends JFrame {
 		panel_turma.add(lblSelecioneOCurso_1);
 		
 		JButton btnNewButton_3 = new JButton("Cadastrar");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		        String nrAlunos = textField_18.getText();
+		        if (nrAlunos.isEmpty()) {
+		            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
+		            return;
+		        }
+
+		        // Verifica se há um curso selecionado na lista
+		        if (list_2.isSelectionEmpty()) {
+		            JOptionPane.showMessageDialog(null, "Selecione um curso!");
+		            return;
+		        }
+
+		        // Verifica se há uma sala selecionada na lista
+		        if (list_3.isSelectionEmpty()) {
+		            JOptionPane.showMessageDialog(null, "Selecione uma sala!");
+		            return;
+		        }
+
+		        // Obtém o curso selecionado
+		        String cursoSelecionado = list_2.getSelectedValue().toString();
+
+		        // Obtém a sala selecionada
+		        String salaSelecionada = list_3.getSelectedValue().toString();
+
+		        Turma turma = new Turma(nrAlunos, cursoSelecionado, salaSelecionada);
+		        // Código adicional para salvar a turma ou realizar outras operações necessárias
+
+		        // Exibe a mensagem de sucesso no cadastro da turma
+		        JOptionPane.showMessageDialog(null, "Turma cadastrada com sucesso!\nCurso: " + cursoSelecionado + "\nSala: " + salaSelecionada);
+
+		        // Limpa os campos de texto após o cadastro
+		        textField_18.setText("");
+
+		        // Limpa a seleção das listas de curso e sala
+		        list_2.clearSelection();
+		        list_3.clearSelection();
+		    }
+		});
 		btnNewButton_3.setBounds(149, 209, 118, 23);
 		panel_turma.add(btnNewButton_3);
 		
@@ -687,6 +769,34 @@ public class TelaPrincipal extends JFrame {
 		panel_turma.add(separator_2);
 		
 		JButton btnNewButton_3_1 = new JButton("Cadastrar");
+		btnNewButton_3_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			        String andar = textField_19.getText();
+			        String corredor = textField_20.getText();
+			        String sala = textField_21.getText();
+
+			        // Validação dos campos de texto
+			        if (andar.isEmpty() || corredor.isEmpty() || sala.isEmpty()) {
+			            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
+			            return;
+			        }
+
+			        // Criação do objeto Sala com as informações fornecidas
+			        Sala novaSala = new Sala(andar, corredor, sala);
+
+			        // Operações adicionais, como salvar a sala em um banco de dados ou em uma estrutura de dados
+
+			        // Exibe uma mensagem de sucesso no cadastro da sala
+			        JOptionPane.showMessageDialog(null, "Sala cadastrada com sucesso!");
+
+			        // Limpa os campos de texto após o cadastro
+			        textField_19.setText("");
+			        textField_20.setText("");
+			        textField_21.setText("");
+			    }
+			});
+			
 		btnNewButton_3_1.setBounds(502, 209, 118, 23);
 		panel_turma.add(btnNewButton_3_1);
 		
