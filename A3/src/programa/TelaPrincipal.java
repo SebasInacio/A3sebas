@@ -340,6 +340,7 @@ public class TelaPrincipal extends JFrame {
 		
 		table_1 = new JTable();
 		table_1.setEnabled(false);
+		table_1.setRowSelectionAllowed(false);
 		table_1.setShowHorizontalLines(false);
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
