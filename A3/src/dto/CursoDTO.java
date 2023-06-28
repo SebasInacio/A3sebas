@@ -24,10 +24,10 @@ public class CursoDTO {
 		return new CursoDTO(cargaHoraria2, nome, descricao);
 	}
 	
-	public int getCodCurso() {
+	public int getIdCurso() {
 		return idCurso;
 	}
-	public void setCodCurso(int codCurso) {
+	public void setIdCurso(int codCurso) {
 		this.idCurso = codCurso;
 	}
 	public String getCargaHoraria() {

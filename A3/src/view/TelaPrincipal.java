@@ -26,6 +26,7 @@ import javax.swing.JTextPane;
 import javax.swing.DropMode;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import dto.AlunoDTO;
 import dto.CursoDTO;
@@ -675,7 +676,7 @@ public class TelaPrincipal extends JFrame {
 		btnListarCurso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CursoDAO objlistarcurso = new CursoDAO();
-				JOptionPane.showMessageDialog(null, objlistarcurso.listarCurso().toString());
+
 				
 				
 			}
