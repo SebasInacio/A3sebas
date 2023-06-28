@@ -1,10 +1,10 @@
-package programa;
+package dto;
 
-public class Sala {
+public class SalaDTO {
 
 	String sala, corredor, andar;
 
-	public Sala(String andar2, String corredor2, String sala2) {
+	public SalaDTO(String andar2, String corredor2, String sala2) {
 		// TODO Auto-generated constructor stub
 	}
 

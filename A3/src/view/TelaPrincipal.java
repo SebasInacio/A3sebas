@@ -1,4 +1,4 @@
-package programa;
+package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,12 +25,21 @@ import javax.swing.JTextPane;
 import javax.swing.DropMode;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import dto.AlunoDTO;
+import dto.CursoDTO;
+import dto.ProfessorDTO;
+import dto.SalaDTO;
+import dto.TurmaDTO;
+
 import javax.swing.JToolBar;
 import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JMenuItem;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class TelaPrincipal extends JFrame {
 
@@ -233,7 +242,7 @@ public class TelaPrincipal extends JFrame {
 			            JOptionPane.showMessageDialog(TelaPrincipal.this, "Celular inválido!");
 		        } else {
 		            // Realizar o cadastro do aluno no sistema
-		            Aluno aluno = new Aluno(nome, sobrenome, cpf, celular, email, bairro, rua, numero);
+		            AlunoDTO aluno = new AlunoDTO(nome, sobrenome, cpf, celular, email, bairro, rua, numero);
 		            // Código para cadastrar o aluno
 
 		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Aluno cadastrado com sucesso!");
@@ -303,22 +312,6 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_1.setBounds(86, 55, 170, 14);
 		panel_aluno.add(lblNewLabel_1);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(86, 344, 168, 74);
-		panel_aluno.add(scrollPane);
-		
-		JList list = new JList();
-		scrollPane.setViewportView(list);
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setBounds(278, 0, 2, 463);
@@ -326,12 +319,12 @@ public class TelaPrincipal extends JFrame {
 		
 		lblSelecioneOCurso_3 = new JLabel("Selecione");
 		lblSelecioneOCurso_3.setHorizontalAlignment(SwingConstants.LEFT);
-		lblSelecioneOCurso_3.setBounds(10, 357, 143, 14);
+		lblSelecioneOCurso_3.setBounds(10, 344, 143, 14);
 		panel_aluno.add(lblSelecioneOCurso_3);
 		
 		lblNewLabel = new JLabel("o Curso:");
 		lblNewLabel.setToolTipText("");
-		lblNewLabel.setBounds(10, 374, 46, 14);
+		lblNewLabel.setBounds(10, 357, 73, 14);
 		panel_aluno.add(lblNewLabel);
 		
 		scrollPane_1 = new JScrollPane();
@@ -376,6 +369,11 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel_7.setBounds(441, 57, 170, 14);
 		panel_aluno.add(lblNewLabel_7);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"a", "a", "a", "a", "a", "a"}));
+		comboBox.setBounds(86, 344, 170, 18);
+		panel_aluno.add(comboBox);
 		
 		JPanel panel_professor = new JPanel();
 		tabbedPane.addTab("Professor", null, panel_professor, null);
@@ -485,7 +483,7 @@ public class TelaPrincipal extends JFrame {
 			            JOptionPane.showMessageDialog(TelaPrincipal.this, "Celular inválido!");
 		        } else {
 		            // Realizar o cadastro do aluno no sistema
-		            Professor professor = new Professor(nome, sobrenome, cpf, celular, email, bairro, rua, numero);
+		            ProfessorDTO professor = new ProfessorDTO(nome, sobrenome, cpf, celular, email, bairro, rua, numero);
 		            // Código para cadastrar o professor
 
 		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Professor cadastrado com sucesso!");
@@ -615,7 +613,7 @@ public class TelaPrincipal extends JFrame {
 				            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
 				        } else {
 				            // Aqui você pode realizar a lógica de cadastro do curso
-				            Curso curso = new Curso(nome, duracao, descricao);
+				            CursoDTO curso = new CursoDTO(nome, duracao, descricao);
 				            // Código adicional para salvar o curso ou realizar outras operações necessárias
 				            
 				            JOptionPane.showMessageDialog(null, "Curso cadastrado com sucesso!");
@@ -701,7 +699,7 @@ public class TelaPrincipal extends JFrame {
 		        // Obtém a sala selecionada
 		        String salaSelecionada = list_3.getSelectedValue().toString();
 
-		        Turma turma = new Turma(nrAlunos, cursoSelecionado, salaSelecionada);
+		        TurmaDTO turma = new TurmaDTO(nrAlunos, cursoSelecionado, salaSelecionada);
 		        // Código adicional para salvar a turma ou realizar outras operações necessárias
 
 		        // Exibe a mensagem de sucesso no cadastro da turma
@@ -784,7 +782,7 @@ public class TelaPrincipal extends JFrame {
 			        }
 
 			        // Criação do objeto Sala com as informações fornecidas
-			        Sala novaSala = new Sala(andar, corredor, sala);
+			        SalaDTO novaSala = new SalaDTO(andar, corredor, sala);
 
 			        // Operações adicionais, como salvar a sala em um banco de dados ou em uma estrutura de dados
 

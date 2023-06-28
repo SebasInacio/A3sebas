@@ -1,10 +1,10 @@
-package programa;
+package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
-public class ConectaBD {
+public class ConexaoDAO {
 	
 	public Connection conectaBD() {
 		Connection conn = null;

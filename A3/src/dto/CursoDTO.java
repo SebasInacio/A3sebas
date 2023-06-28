@@ -1,7 +1,7 @@
-package programa;
+package dto;
 
 
-public class Curso {
+public class CursoDTO {
 
 	
 	int codCurso;
@@ -9,7 +9,7 @@ public class Curso {
 	int contador = 1;
 	
 	
-	public Curso( String cargaHoraria, String nome, String descricao) {
+	public CursoDTO( String cargaHoraria, String nome, String descricao) {
 		this.cargaHoraria = cargaHoraria;
 		this.codCurso = contador;
 		this.descricao = descricao;
@@ -17,11 +17,11 @@ public class Curso {
 		contador++;
 	}
 	
-	public Curso() {
+	public CursoDTO() {
 	}
 
-	public static Curso cadastrarCurso(String cargaHoraria2, String nome, String descricao) {
-		return new Curso(cargaHoraria2, nome, descricao);
+	public static CursoDTO cadastrarCurso(String cargaHoraria2, String nome, String descricao) {
+		return new CursoDTO(cargaHoraria2, nome, descricao);
 	}
 	
 	public int getCodCurso() {

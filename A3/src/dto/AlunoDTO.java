@@ -1,14 +1,14 @@
-package programa;
+package dto;
 
-public class Aluno {
+public class AlunoDTO {
 
 	String nome, sobrenome,  cpf, celular, email, rua, bairro, numeroCasa;
 	int matricula;
 	
-	public Aluno(String nome, String sobrenome, String cpf, String celular, String email, String bairro, String rua, String numero) {
+	public AlunoDTO(String nome, String sobrenome, String cpf, String celular, String email, String bairro, String rua, String numero) {
 		super();
 	}
-	public Aluno(String nome, String sobrenome, String cpf) {
+	public AlunoDTO(String nome, String sobrenome, String cpf) {
 		super();
 		this.nome = nome;
 		this.sobrenome = sobrenome;
