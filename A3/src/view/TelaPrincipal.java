@@ -1,5 +1,6 @@
 package view;
 
+import dao.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -102,6 +103,8 @@ public class TelaPrincipal extends JFrame {
 	private JLabel lblNumero_3;
 	private JComboBox comboBoxSala;
 	private JComboBox comboBoxCurso;
+	private JTable table_cursos;
+	private JButton btnListarCurso;
 
 	/**
 	 * Launch the application.
@@ -639,8 +642,46 @@ public class TelaPrincipal extends JFrame {
 		panel_curso.add(btnCadastrarCurso);
 		
 		scrollPane_5 = new JScrollPane();
-		scrollPane_5.setBounds(343, 63, 263, 338);
+		scrollPane_5.setBounds(312, 60, 124, 225);
 		panel_curso.add(scrollPane_5);
+		
+		table_cursos = new JTable();
+		table_cursos.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"1"},
+				{"2"},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+			},
+			new String[] {
+				"Cursos"
+			}
+		));
+		scrollPane_5.setViewportView(table_cursos);
+		
+		btnListarCurso = new JButton("Listar");
+		btnListarCurso.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CursoDAO objlistarcurso = new CursoDAO();
+				JOptionPane.showMessageDialog(null, objlistarcurso.listarCurso().toString());
+				
+				
+			}
+		});
+		btnListarCurso.setBounds(322, 299, 89, 23);
+		panel_curso.add(btnListarCurso);
 		
 		JPanel panel_turma = new JPanel();
 		tabbedPane.addTab("Turmas", null, panel_turma, null);
