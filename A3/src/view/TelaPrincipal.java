@@ -38,6 +38,7 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JMenuItem;
+import javax.swing.JComboBox;
 
 public class TelaPrincipal extends JFrame {
 
@@ -98,6 +99,7 @@ public class TelaPrincipal extends JFrame {
 	private JScrollPane scrollPane_1;
 	private JLabel lblNewLabel_7;
 	private JTable table_1;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -310,22 +312,6 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_1.setBounds(86, 55, 170, 14);
 		panel_aluno.add(lblNewLabel_1);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(86, 344, 168, 74);
-		panel_aluno.add(scrollPane);
-		
-		JList list = new JList();
-		scrollPane.setViewportView(list);
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setBounds(278, 0, 2, 463);
@@ -333,12 +319,12 @@ public class TelaPrincipal extends JFrame {
 		
 		lblSelecioneOCurso_3 = new JLabel("Selecione");
 		lblSelecioneOCurso_3.setHorizontalAlignment(SwingConstants.LEFT);
-		lblSelecioneOCurso_3.setBounds(10, 357, 143, 14);
+		lblSelecioneOCurso_3.setBounds(10, 359, 167, 14);
 		panel_aluno.add(lblSelecioneOCurso_3);
 		
 		lblNewLabel = new JLabel("o Curso:");
 		lblNewLabel.setToolTipText("");
-		lblNewLabel.setBounds(10, 374, 46, 14);
+		lblNewLabel.setBounds(10, 376, 167, 14);
 		panel_aluno.add(lblNewLabel);
 		
 		scrollPane_1 = new JScrollPane();
@@ -383,6 +369,10 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel_7.setBounds(441, 57, 170, 14);
 		panel_aluno.add(lblNewLabel_7);
+		
+		comboBox = new JComboBox();
+		comboBox.setBounds(86, 357, 170, 22);
+		panel_aluno.add(comboBox);
 		
 		JPanel panel_professor = new JPanel();
 		tabbedPane.addTab("Professor", null, panel_professor, null);
