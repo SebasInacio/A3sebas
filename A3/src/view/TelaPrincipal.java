@@ -46,14 +46,14 @@ public class TelaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtAsdas;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField txtNomeAluno;
+	private JTextField txtSobrenomeAluno;
+	private JTextField txtCpfAluno;
+	private JTextField txtCelularAluno;
+	private JTextField txtEmailAluno;
+	private JTextField txtBairroAluno;
+	private JTextField txtRuaAluno;
+	private JTextField txtNumeroAluno;
 	private JLabel lblSobrenome;
 	private JLabel lblCpf;
 	private JLabel lblCelular;
@@ -98,7 +98,7 @@ public class TelaPrincipal extends JFrame {
 	private JScrollPane scrollPane_1;
 	private JLabel lblNewLabel_7;
 	private JTable table_1;
-	private JComboBox comboBoxAluno;
+	private JComboBox comboCursoAluno;
 	private JComboBox comboBoxProfessor;
 	private JLabel lblNumero_2;
 	private JLabel lblNumero_3;
@@ -143,45 +143,45 @@ public class TelaPrincipal extends JFrame {
 		tabbedPane.addTab("Aluno", null, panel_aluno, null);
 		panel_aluno.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(86, 96, 170, 20);
-		panel_aluno.add(textField);
-		textField.setColumns(10);
+		txtNomeAluno = new JTextField();
+		txtNomeAluno.setBounds(86, 96, 170, 20);
+		panel_aluno.add(txtNomeAluno);
+		txtNomeAluno.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(86, 127, 170, 20);
-		panel_aluno.add(textField_1);
+		txtSobrenomeAluno = new JTextField();
+		txtSobrenomeAluno.setColumns(10);
+		txtSobrenomeAluno.setBounds(86, 127, 170, 20);
+		panel_aluno.add(txtSobrenomeAluno);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(86, 158, 170, 20);
-		panel_aluno.add(textField_2);
+		txtCpfAluno = new JTextField();
+		txtCpfAluno.setColumns(10);
+		txtCpfAluno.setBounds(86, 158, 170, 20);
+		panel_aluno.add(txtCpfAluno);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(86, 189, 170, 20);
-		panel_aluno.add(textField_3);
+		txtCelularAluno = new JTextField();
+		txtCelularAluno.setColumns(10);
+		txtCelularAluno.setBounds(86, 189, 170, 20);
+		panel_aluno.add(txtCelularAluno);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(86, 220, 170, 20);
-		panel_aluno.add(textField_4);
+		txtEmailAluno = new JTextField();
+		txtEmailAluno.setColumns(10);
+		txtEmailAluno.setBounds(86, 220, 170, 20);
+		panel_aluno.add(txtEmailAluno);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(86, 251, 170, 20);
-		panel_aluno.add(textField_5);
+		txtBairroAluno = new JTextField();
+		txtBairroAluno.setColumns(10);
+		txtBairroAluno.setBounds(86, 251, 170, 20);
+		panel_aluno.add(txtBairroAluno);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(86, 282, 170, 20);
-		panel_aluno.add(textField_6);
+		txtRuaAluno = new JTextField();
+		txtRuaAluno.setColumns(10);
+		txtRuaAluno.setBounds(86, 282, 170, 20);
+		panel_aluno.add(txtRuaAluno);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(86, 313, 170, 20);
-		panel_aluno.add(textField_7);
+		txtNumeroAluno = new JTextField();
+		txtNumeroAluno.setColumns(10);
+		txtNumeroAluno.setBounds(86, 313, 170, 20);
+		panel_aluno.add(txtNumeroAluno);
 		
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setHorizontalAlignment(SwingConstants.LEFT);
@@ -227,15 +227,15 @@ public class TelaPrincipal extends JFrame {
 		btnCadastrarAluno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String nome = textField.getText();
-			    String sobrenome = textField_1.getText();
-			    String cpf = textField_2.getText();
-			    String celular = textField_3.getText();
-			    String email = textField_4.getText();
-			    String bairro = textField_5.getText();
-			    String rua = textField_6.getText();
-			    String numero = textField_7.getText();
-				
+				String nome = txtNomeAluno.getText();
+			    String sobrenome = txtSobrenomeAluno.getText();
+			    String cpf = txtCpfAluno.getText();
+			    String celular = txtCelularAluno.getText();
+			    String email = txtEmailAluno.getText();
+			    String bairro = txtBairroAluno.getText();
+			    String rua = txtRuaAluno.getText();
+			    String numero = txtNumeroAluno.getText();
+			
 			 // Verificar se todos os campos estão preenchidos
 		        if (nome.isBlank() || sobrenome.isBlank() || cpf.isBlank() || celular.isBlank() || email.isBlank()
 		                || bairro.isBlank() || rua.isBlank() || numero.isBlank()) {
@@ -248,21 +248,31 @@ public class TelaPrincipal extends JFrame {
 			            JOptionPane.showMessageDialog(TelaPrincipal.this, "Celular inválido!");
 		        } else {
 		            // Realizar o cadastro do aluno no sistema
-		            AlunoDTO aluno = new AlunoDTO(nome, sobrenome, cpf, celular, email, bairro, rua, numero);
+		            AlunoDTO objalunoodto = new AlunoDTO();
+		            objalunoodto.setNome(nome);
+		            objalunoodto.setSobrenome(sobrenome);
+		            objalunoodto.setCpf(cpf);
+		            objalunoodto.setCelular(celular);
+		            objalunoodto.setEmail(email);
+		            objalunoodto.setBairro(bairro);
+		            objalunoodto.setRua(rua);
+		            objalunoodto.setNumeroCasa(numero);
+		            
+		            
 		            // Código para cadastrar o aluno
 
 		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Aluno cadastrado com sucesso!");
 		        }
 		        
 		     // Limpa os campos após o cadastro
-	            textField.setText("");
-	            textField_1.setText("");
-	            textField_2.setText("");
-	            textField_3.setText("");
-	            textField_4.setText("");
-	            textField_5.setText("");
-	            textField_6.setText("");
-	            textField_7.setText("");
+	            txtNomeAluno.setText("");
+	            txtSobrenomeAluno.setText("");
+	            txtCpfAluno.setText("");
+	            txtCelularAluno.setText("");
+	            txtEmailAluno.setText("");
+	            txtBairroAluno.setText("");
+	            txtRuaAluno.setText("");
+	            txtNumeroAluno.setText("");
 	        
 		    }
 
@@ -310,7 +320,7 @@ public class TelaPrincipal extends JFrame {
 			  
 		}});
 		btnCadastrarAluno.setBounds(102, 429, 116, 23);
-		panel_aluno.add(btnCadastrarAluno);
+		panel_aluno.add(btnCadastrarAluno); 
 		
 		JLabel lblNewLabel_1 = new JLabel("Cadastrar Aluno");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -376,9 +386,9 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_7.setBounds(441, 57, 170, 14);
 		panel_aluno.add(lblNewLabel_7);
 		
-		comboBoxAluno = new JComboBox();
-		comboBoxAluno.setBounds(86, 357, 170, 22);
-		panel_aluno.add(comboBoxAluno);
+		comboCursoAluno = new JComboBox();
+		comboCursoAluno.setBounds(86, 357, 170, 22);
+		panel_aluno.add(comboCursoAluno);
 		
 		JPanel panel_professor = new JPanel();
 		tabbedPane.addTab("Professor", null, panel_professor, null);
