@@ -170,7 +170,7 @@ public class TelaPrincipal extends JFrame {
 			public void listarValoresProfessores() {
 				ProfessorDAO objProfessorDAO = new ProfessorDAO();
 				
-				DefaultTableModel model = (DefaultTableModel) table_alunos.getModel();
+				DefaultTableModel model = (DefaultTableModel) table_professor.getModel();
 				model.setNumRows(0);
 				ArrayList<ProfessorDTO> lista = objProfessorDAO.listarProfessor();
 				
@@ -561,6 +561,7 @@ public class TelaPrincipal extends JFrame {
 		            // Realizar o cadastro do aluno no sistema
 		            ProfessorDTO professor = new ProfessorDTO(nome, sobrenome, cpf, celular, email, bairro, rua, numero);
 		            // Código para cadastrar o professor
+		            
 
 		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Professor cadastrado com sucesso!");
 		            
@@ -654,13 +655,22 @@ public class TelaPrincipal extends JFrame {
 		table_professor = new JTable();
 		table_professor.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column"
+				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
 			}
 		));
 		scrollPane.setViewportView(table_professor);
+		
+		JButton btnListarProfessor = new JButton("Listar");
+		btnListarProfessor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listarValoresProfessores();
+			}
+		});
+		btnListarProfessor.setBounds(583, 432, 85, 21);
+		panel_professor.add(btnListarProfessor);
 		
 		JPanel panel_curso = new JPanel();
 		tabbedPane.addTab("Cursos", null, panel_curso, null);

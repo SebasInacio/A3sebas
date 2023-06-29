@@ -16,7 +16,7 @@ public class ProfessorDAO {
 
 	public void cadastrarProfessor(AlunoDTO objProfessorDTO) {
 		Connection conn = new ConexaoDAO().conectaBD();
-		String sql = "INSERT INTO a3database.professores (nome_aluno, sobrenome_aluno, cpf_aluno, celular_aluno, email_aluno, bairro_aluno, rua_aluno, numero_aluno) VALUES (?, ?, ?, ?, ?, ?, ? ,? );" ;
+		String sql = "INSERT INTO a3database.professores (nome_professor, sobrenome_professor, cpf_professor, celular_professor, email_professor, bairro_professor, rua_professor, numero_professor) VALUES (?, ?, ?, ?, ?, ?, ? ,? );" ;
 		
 		try { 
 			pstm = conn.prepareStatement(sql);
@@ -56,7 +56,7 @@ public class ProfessorDAO {
 			//enquanto ouver dados na proxima linha ele puxa o dado
 			while(rs.next()) 
 			{ 
-				ProfessorDTO objProfessorDTO = new AlunoDTO();
+				ProfessorDTO objProfessorDTO = new ProfessorDTO();
 				objProfessorDTO.setIdProfessor(0);
 				objProfessorDTO.setNome(rs.getString("nome_professor"));
 				objProfessorDTO.setSobrenome(rs.getString("sobrenome_professor"));
