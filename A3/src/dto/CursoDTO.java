@@ -5,23 +5,23 @@ public class CursoDTO {
 
 	
 	int idCurso;
-	String nome, descricao, cargaHoraria;
-	int contador = 1;
+	public void setDuracao(String duracao) {
+		this.duracao = duracao;
+	}
+	String nome, descricao, duracao;
 	
 	
-	public CursoDTO( String cargaHoraria, String nome, String descricao) {
-		this.cargaHoraria = cargaHoraria;
-		this.idCurso = contador;
+	public CursoDTO( String nome, String duracao, String descricao) {
+		this.duracao = duracao;
 		this.descricao = descricao;
 		this.nome = nome;
-		contador++;
 	}
 	
 	public CursoDTO() {
 	}
 
-	public static CursoDTO cadastrarCurso(String cargaHoraria2, String nome, String descricao) {
-		return new CursoDTO(cargaHoraria2, nome, descricao);
+	public static CursoDTO cadastrarCurso(String nome, String duracao, String descricao) {
+		return new CursoDTO(nome, duracao, descricao);
 	}
 	
 	public int getIdCurso() {
@@ -30,11 +30,11 @@ public class CursoDTO {
 	public void setIdCurso(int codCurso) {
 		this.idCurso = codCurso;
 	}
-	public String getCargaHoraria() {
-		return cargaHoraria;
+	public String getDuracao() {
+		return duracao;
 	}
 	public void setCargaHoraria(String cargaHoraria) {
-		this.cargaHoraria = cargaHoraria;
+		this.duracao = cargaHoraria;
 	}
 	public String getNome() {
 		return nome;

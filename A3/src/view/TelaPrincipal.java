@@ -39,6 +39,9 @@ import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.swing.JMenuItem;
 import javax.swing.JComboBox;
 
@@ -95,9 +98,6 @@ public class TelaPrincipal extends JFrame {
 	private JScrollPane scrollPane_5;
 	private JLabel lblSelecioneOCurso_3;
 	private JLabel lblNewLabel;
-	private JScrollPane scrollPane_1;
-	private JLabel lblNewLabel_7;
-	private JTable table_1;
 	private JComboBox comboBoxAluno;
 	private JComboBox comboBoxProfessor;
 	private JLabel lblNumero_2;
@@ -126,17 +126,33 @@ public class TelaPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	public void listarValoresCursos() {
+		CursoDAO objCursoDAO = new CursoDAO();
+		
+		DefaultTableModel model = (DefaultTableModel) table_cursos.getModel();
+		model.setNumRows(0);
+		ArrayList<CursoDTO> lista = objCursoDAO.listarCurso();
+		
+		for(int num=0; num < lista.size(); num++) {
+			model.addRow(new Object[] {
+					lista.get(num).getIdCurso(),
+					lista.get(num).getNome(),
+					lista.get(num).getDuracao()
+			});
+				}
+		
+	}
 	public TelaPrincipal() {
 		setTitle("Escola de Cursos do Tio Sebas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 751, 601);
+		setBounds(100, 100, 1000, 601);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 60, 715, 491);
+		tabbedPane.setBounds(10, 60, 964, 491);
 		contentPane.add(tabbedPane);
 		
 		JPanel panel_aluno = new JPanel();
@@ -332,49 +348,6 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel.setToolTipText("");
 		lblNewLabel.setBounds(10, 361, 167, 14);
 		panel_aluno.add(lblNewLabel);
-		
-		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(290, 103, 410, 349);
-		panel_aluno.add(scrollPane_1);
-		
-		table_1 = new JTable();
-		table_1.setEnabled(false);
-		table_1.setRowSelectionAllowed(false);
-		table_1.setShowHorizontalLines(false);
-		table_1.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, "", null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-			},
-			new String[] {
-				"Nome", "Sobrenome", "Curso", "Matricula", "CPF"
-			}
-		));
-		scrollPane_1.setViewportView(table_1);
-		
-		lblNewLabel_7 = new JLabel("Tabela de Alunos");
-		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_7.setBounds(441, 57, 170, 14);
-		panel_aluno.add(lblNewLabel_7);
 		
 		comboBoxAluno = new JComboBox();
 		comboBoxAluno.setBounds(86, 357, 170, 22);
@@ -618,10 +591,15 @@ public class TelaPrincipal extends JFrame {
 				        
 				        if (nome.isEmpty() || duracao.isEmpty() || descricao.isEmpty()) {
 				            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
-				        } else {
+				        } 
+				        else {
 				            // Aqui você pode realizar a lógica de cadastro do curso
 				            CursoDTO curso = new CursoDTO(nome, duracao, descricao);
 				            // Código adicional para salvar o curso ou realizar outras operações necessárias
+				            CursoDAO objCursoDAO = new CursoDAO();
+				            objCursoDAO.cadastrarCurso(curso);
+				            
+				          
 				            
 				            JOptionPane.showMessageDialog(null, "Curso cadastrado com sucesso!");
 				            
@@ -631,6 +609,8 @@ public class TelaPrincipal extends JFrame {
 				            textPaneCurso.setText("");
 				            
 				        }
+				        
+				        
 				    }
 			
 				});
@@ -643,45 +623,32 @@ public class TelaPrincipal extends JFrame {
 		panel_curso.add(btnCadastrarCurso);
 		
 		scrollPane_5 = new JScrollPane();
-		scrollPane_5.setBounds(312, 60, 124, 225);
+		scrollPane_5.setBounds(304, 11, 645, 407);
 		panel_curso.add(scrollPane_5);
 		
 		table_cursos = new JTable();
 		table_cursos.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"1"},
-				{"2"},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
+				{null, null, null},
 			},
 			new String[] {
-				"Cursos"
+				"Id Curso", "Nome Curso", "Dura\u00E7\u00E3o"
 			}
 		));
+		table_cursos.getColumnModel().getColumn(0).setPreferredWidth(56);
+		table_cursos.getColumnModel().getColumn(1).setPreferredWidth(123);
+		table_cursos.getColumnModel().getColumn(2).setPreferredWidth(83);
 		scrollPane_5.setViewportView(table_cursos);
 		
 		btnListarCurso = new JButton("Listar");
 		btnListarCurso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CursoDAO objlistarcurso = new CursoDAO();
-
+				listarValoresCursos();
 				
 				
 			}
 		});
-		btnListarCurso.setBounds(322, 299, 89, 23);
+		btnListarCurso.setBounds(602, 429, 89, 23);
 		panel_curso.add(btnListarCurso);
 		
 		JPanel panel_turma = new JPanel();
@@ -789,38 +756,6 @@ public class TelaPrincipal extends JFrame {
 		separator_2.setBounds(0, 242, 700, 14);
 		panel_turma.add(separator_2);
 		
-		JButton btnCadastrarSala = new JButton("Cadastrar");
-		btnCadastrarSala.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			        String andar = textField_19.getText();
-			        String corredor = textField_20.getText();
-			        String sala = textField_21.getText();
-
-			        // Validação dos campos de texto
-			        if (andar.isEmpty() || corredor.isEmpty() || sala.isEmpty()) {
-			            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
-			            return;
-			        }
-
-			        // Criação do objeto Sala com as informações fornecidas
-			        SalaDTO novaSala = new SalaDTO(andar, corredor, sala);
-
-			        // Operações adicionais, como salvar a sala em um banco de dados ou em uma estrutura de dados
-
-			        // Exibe uma mensagem de sucesso no cadastro da sala
-			        JOptionPane.showMessageDialog(null, "Sala cadastrada com sucesso!");
-
-			        // Limpa os campos de texto após o cadastro
-			        textField_19.setText("");
-			        textField_20.setText("");
-			        textField_21.setText("");
-			    }
-			});
-			
-		btnCadastrarSala.setBounds(502, 209, 118, 23);
-		panel_turma.add(btnCadastrarSala);
-		
 		JButton btnListarTurmas = new JButton("Listar");
 		btnListarTurmas.setBounds(103, 268, 96, 23);
 		panel_turma.add(btnListarTurmas);
@@ -876,6 +811,14 @@ public class TelaPrincipal extends JFrame {
 		comboBoxCurso = new JComboBox();
 		comboBoxCurso.setBounds(217, 124, 132, 22);
 		panel_turma.add(comboBoxCurso);
+		
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("New tab", null, panel, null);
+		panel.setLayout(null);
+		
+		JButton btnCadastrarSala = new JButton("Cadastrar");
+		btnCadastrarSala.setBounds(397, 346, 81, 23);
+		panel.add(btnCadastrarSala);
 		//painel aluno fim
 		
 		
