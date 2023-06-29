@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 public class ConexaoDAO {
 	
 	public Connection conectaBD() {
-		Connection conn;
+		Connection conn = null;
 		
 		try {
 			String url = "jdbc:mysql://localhost/a3database?user=root&password=SqlSebas@123456";
@@ -22,7 +22,7 @@ public class ConexaoDAO {
 			}
 		
 		
-		return null;
+		return conn;
 	}
 
 }
