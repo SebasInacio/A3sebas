@@ -3,6 +3,7 @@ package dto;
 public class AlunoDTO {
 
 	private String nome, sobrenome,  cpf, celular, email, rua, bairro, numeroCasa;
+	private int idCurso;
 	public String getNome() {
 		return nome;
 	}

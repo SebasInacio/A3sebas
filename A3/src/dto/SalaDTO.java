@@ -2,10 +2,24 @@ package dto;
 
 public class SalaDTO {
 
-	String sala, corredor, andar;
+	private String sala, corredor, andar;
+	private int idSala;
 
-	public SalaDTO(String andar2, String corredor2, String sala2) {
-		// TODO Auto-generated constructor stub
+	public SalaDTO(String andar, String corredor, String sala) {
+		
+		this.sala = sala;
+		this.corredor = corredor;
+		this.andar = andar;
+		
+
+	}
+
+	public int getIdSala() {
+		return idSala;
+	}
+
+	public void setIdSala(int idSala) {
+		this.idSala = idSala;
 	}
 
 	public String getSala() {

@@ -4,12 +4,14 @@ package dto;
 public class CursoDTO {
 
 	
-	int idCurso;
+	private int idCurso;
+	private String duracao, descricao, nome;
+	
+	
+	
 	public void setDuracao(String duracao) {
 		this.duracao = duracao;
 	}
-	String nome, descricao, duracao;
-	
 	
 	public CursoDTO( String nome, String duracao, String descricao) {
 		this.duracao = duracao;
