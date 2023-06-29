@@ -110,6 +110,7 @@ public class TelaPrincipal extends JFrame {
 	private JComboBox comboBoxCurso;
 	private JTable table_cursos;
 	private JButton btnListarCurso;
+	private JTable table_professor;
 
 	/**
 	 * Launch the application.
@@ -164,9 +165,31 @@ public class TelaPrincipal extends JFrame {
 						lista.get(num).getIdCurso()
 						
 				});
-					}
+					}}
+			
+			public void listarValoresProfessores() {
+				ProfessorDAO objProfessorDAO = new ProfessorDAO();
+				
+				DefaultTableModel model = (DefaultTableModel) table_professor.getModel();
+				model.setNumRows(0);
+				ArrayList<ProfessorDTO> lista = objProfessorDAO.listarProfessor();
+				
+				for(int num=0; num < lista.size(); num++) {
+					model.addRow(new Object[] {
+							
+					
+							lista.get(num).getIdProfessor(),
+							lista.get(num).getNome(),
+							lista.get(num).getSobrenome(),
+							lista.get(num).getCpf(),
+							lista.get(num).getCelular(),
+							lista.get(num).getEmail(),
+							
+												});
+			}
+			}			
 		
-	}
+	
 	public TelaPrincipal() {
 		setTitle("Escola de Cursos do Tio Sebas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -301,6 +324,8 @@ public class TelaPrincipal extends JFrame {
 		            
 		            
 		            // Código para cadastrar o aluno
+		            AlunoDAO objAlunoDAO = new AlunoDAO();
+		            objAlunoDAO.cadastrarAluno(objAlunoDTO);
 
 		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Aluno cadastrado com sucesso!");
 		        }
@@ -332,7 +357,7 @@ public class TelaPrincipal extends JFrame {
 			    }
 
 			    // Verificar o formato do telefone
-			    return celular.matches("\\d{8,9}");
+			    return celular.matches("\\d{8,11}");
 			
 			}
 
@@ -536,6 +561,7 @@ public class TelaPrincipal extends JFrame {
 		            // Realizar o cadastro do aluno no sistema
 		            ProfessorDTO professor = new ProfessorDTO(nome, sobrenome, cpf, celular, email, bairro, rua, numero);
 		            // Código para cadastrar o professor
+		            
 
 		            JOptionPane.showMessageDialog(TelaPrincipal.this, "Professor cadastrado com sucesso!");
 		            
@@ -616,6 +642,35 @@ public class TelaPrincipal extends JFrame {
 		lblNumero_3.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNumero_3.setBounds(10, 369, 66, 14);
 		panel_professor.add(lblNumero_3);
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setOrientation(SwingConstants.VERTICAL);
+		separator_3.setBounds(295, -15, 2, 479);
+		panel_professor.add(separator_3);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(307, 54, 642, 368);
+		panel_professor.add(scrollPane);
+		
+		table_professor = new JTable();
+		table_professor.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+			}
+		));
+		scrollPane.setViewportView(table_professor);
+		
+		JButton btnListarProfessor = new JButton("Listar");
+		btnListarProfessor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listarValoresProfessores();
+			}
+		});
+		btnListarProfessor.setBounds(583, 432, 85, 21);
+		panel_professor.add(btnListarProfessor);
 		
 		JPanel panel_curso = new JPanel();
 		tabbedPane.addTab("Cursos", null, panel_curso, null);

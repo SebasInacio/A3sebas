@@ -10,7 +10,7 @@ public class ConexaoDAO {
 		Connection conn = null;
 		
 		try {
-			String url = "jdbc:mysql://localhost/a3database?user=root&password=SqlSebas@123456";
+			String url = "jdbc:mysql://localhost/a3database?user=root&password=root";
 			conn = DriverManager.getConnection(url);
 		
 		
