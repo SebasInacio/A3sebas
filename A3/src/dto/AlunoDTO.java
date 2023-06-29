@@ -3,10 +3,16 @@ package dto;
 public class AlunoDTO {
 
 	private String nome, sobrenome,  cpf, celular, email, rua, bairro, numeroCasa;
-	private int idCurso, idAluno;
+	private int idCurso, idAluno, idTurma;
 	
 	
 	
+	public int getIdTurma() {
+		return idTurma;
+	}
+	public void setIdTurma(int idTurma) {
+		this.idTurma = idTurma;
+	}
 	public int getIdAluno() {
 		return idAluno;
 	}

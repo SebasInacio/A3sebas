@@ -6,6 +6,10 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/jvealuno/Downloads/mysql-connector-java-5.1.47.jar"/>
+=======
+	<classpathentry kind="lib" path="/A3sebas/mysql-connector-java-5.1.48-bin.jar"/>
+>>>>>>> refs/remotes/origin/main
 	<classpathentry kind="output" path="bin"/>
 </classpath>

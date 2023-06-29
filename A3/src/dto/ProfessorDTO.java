@@ -3,11 +3,25 @@ package dto;
 public class ProfessorDTO {
 
 	private String nome, sobrenome, cpf, celular, email, bairro, rua, numero;
-	private int idProfessor;
+	private int idProfessor, idCurso;
 	
 	
 	
 	
+	public int getIdCurso() {
+		return idCurso;
+	}
+
+
+	public void setIdCurso(int idCurso) {
+		this.idCurso = idCurso;
+	}
+	
+	
+	public ProfessorDTO() {
+		
+	}
+
 	public ProfessorDTO(String nome, String sobrenome, String cpf, String celular, String email, String bairro,
 			String rua, String numero) {
 		this.nome = nome;
