@@ -14,26 +14,54 @@ import dto.CursoDTO;
 public class AlunoDAO {
 	PreparedStatement pstm;
 	ResultSet rs;
-	Connection conn;
+
+	public void cadastrarAluno(AlunoDTO objAlunoDTO) {
+		Connection conn = new ConexaoDAO().conectaBD();
+		String sql = "INSERT INTO a3database.alunos (nome_aluno, sobrenome_aluno, cpf_aluno, celular_aluno, email_aluno) VALUES (?, ?, ?, ?, ?);" ;
+		
+		try { 
+			pstm = conn.prepareStatement(sql);
+			
+			pstm.setString(1, objAlunoDTO.getNome());
+			pstm.setString(2, objAlunoDTO.getSobrenome());
+			pstm.setString(3, objAlunoDTO.getCpf());
+			pstm.setString(4, objAlunoDTO.getCelular());
+			pstm.setString(5, objAlunoDTO.getEmail());
+			
+			pstm.execute();
+			pstm.close();
+			
+		} catch (SQLException erro) {
+			JOptionPane.showMessageDialog(null,"Cadatrar Curso" + erro);
+			
+		}
+	}
+	
+	
+	
 	
 	public ArrayList<AlunoDTO> listarAluno() {
 		
-		conn = new ConexaoDAO().conectaBD();
-		ArrayList<AlunoDTO> lista = new ArrayList<>();
+		Connection conn = new ConexaoDAO().conectaBD();
+		String sql = "SELECT idAluno, nome_aluno, sobrenome_aluno, cpf_aluno, celular_aluno, email_aluno, curso_aluno FROM alunos ORDER BY idAluno";
 		try 
 		{
-			String sql = "SELECT nome_aluno, sobrenome_aluno, cpf_aluno, celular_aluno, email_aluno, curso_aluno FROM alunos ORDER BY idAluno";
+			pstm = conn.prepareStatement(sql);
+			
 			rs = pstm.executeQuery();
+			ArrayList<AlunoDTO> lista = new ArrayList<>();
+			
 			//enquanto ouver dados na proxima linha ele puxa o dado
 			while(rs.next()) 
 			{
 				AlunoDTO objAlunoDTO = new AlunoDTO();
+				objAlunoDTO.setIdAluno(rs.getInt("idAluno"));
 				objAlunoDTO.setNome(rs.getString("nome_aluno"));
 				objAlunoDTO.setSobrenome(rs.getString("sobrenome_aluno"));
 				objAlunoDTO.setCpf(rs.getString("cpf_aluno"));
 				objAlunoDTO.setCelular(rs.getString("celular_aluno"));
 				objAlunoDTO.setEmail(rs.getString("email_aluno"));
-				objAlunoDTO.set
+				objAlunoDTO.setIdCurso(rs.getInt("curso_aluno"));
 				lista.add(objAlunoDTO);
 			}
 			return lista;

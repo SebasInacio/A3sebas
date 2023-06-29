@@ -28,33 +28,36 @@ public class CursoDAO {
 			JOptionPane.showMessageDialog(null,"Cadatrar Curso" + erro);
 			
 		}
-		
-		
-		
 	}
 	
 	
 	
-	
+	//cria uma array list e armazena os dados do banco dentro dela
 	public ArrayList<CursoDTO> listarCurso() {
 		Connection conn = new ConexaoDAO().conectaBD();
-		String sql = "SELECT nome_curso, idCurso, duracao_curso FROM cursos ORDER BY idCurso;";//seleciona a coluna de nome_curso no banco de dados
+		
+		//obj que armazena o comando para fazer o select no banco de dados
+		String sql = "SELECT nome_curso, idCurso, duracao_curso FROM cursos ORDER BY idCurso;";
 
 		try 
 		{
+			//prepara o comando usando o obj que armazena como argumento
 			 pstm = conn.prepareStatement(sql);
-			
+			 
+			//executa o comando
 			rs = pstm.executeQuery();
-			ArrayList<CursoDTO> lista = new ArrayList<>(); //monta a lista para 
-			//enquanto ouver dados na proxima linha ele puxa o dado
+			ArrayList<CursoDTO> lista = new ArrayList<>(); 
+			
+			//enquanto houverem dados ele ira repetir
 			while(rs.next()) 
 			{
+				//acessando o obj e armazenando dados nesse objeto
 				CursoDTO objCursoDTO = new CursoDTO();
-				objCursoDTO.setIdCurso(rs.getInt("idCurso"));//acessando o obj e setando no objto um id
+				objCursoDTO.setIdCurso(rs.getInt("idCurso"));
 				objCursoDTO.setNome(rs.getString("nome_curso"));
 				objCursoDTO.setDuracao(rs.getString("duracao_curso"));
 				
-				lista.add(objCursoDTO);
+				lista.add(objCursoDTO);//adicionando o obj na arraylist
 			}
 			return lista;	
 		} 

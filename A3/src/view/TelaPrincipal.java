@@ -1,6 +1,8 @@
 package view;
 
 import dao.*;
+import dto.*;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -28,11 +30,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import dto.AlunoDTO;
-import dto.CursoDTO;
-import dto.ProfessorDTO;
-import dto.SalaDTO;
-import dto.TurmaDTO;
 
 import javax.swing.JToolBar;
 import javax.swing.JPopupMenu;
@@ -101,7 +98,7 @@ public class TelaPrincipal extends JFrame {
 
 	private JScrollPane scrollPane_1;
 	private JLabel lblNewLabel_7;
-	private JTable table_1;
+	private JTable table_alunos;
 	private JComboBox comboCursoAluno;
 
 	private JComboBox comboBoxAluno;
@@ -146,7 +143,28 @@ public class TelaPrincipal extends JFrame {
 					lista.get(num).getNome(),
 					lista.get(num).getDuracao()
 			});
+			}
 				}
+		
+		public void listarValoresAlunos() {
+			AlunoDAO objAlunoDAO = new AlunoDAO();
+			
+			DefaultTableModel model = (DefaultTableModel) table_alunos.getModel();
+			model.setNumRows(0);
+			ArrayList<AlunoDTO> lista = objAlunoDAO.listarAluno();
+			
+			for(int num=0; num < lista.size(); num++) {
+				model.addRow(new Object[] {
+						lista.get(num).getIdAluno(),
+						lista.get(num).getNome(),
+						lista.get(num).getSobrenome(),
+						lista.get(num).getCpf(),
+						lista.get(num).getCelular(),
+						lista.get(num).getEmail(),
+						lista.get(num).getIdCurso()
+						
+				});
+					}
 		
 	}
 	public TelaPrincipal() {
@@ -271,15 +289,15 @@ public class TelaPrincipal extends JFrame {
 			            JOptionPane.showMessageDialog(TelaPrincipal.this, "Celular inválido!");
 		        } else {
 		            // Realizar o cadastro do aluno no sistema
-		            AlunoDTO objalunoodto = new AlunoDTO();
-		            objalunoodto.setNome(nome);
-		            objalunoodto.setSobrenome(sobrenome);
-		            objalunoodto.setCpf(cpf);
-		            objalunoodto.setCelular(celular);
-		            objalunoodto.setEmail(email);
-		            objalunoodto.setBairro(bairro);
-		            objalunoodto.setRua(rua);
-		            objalunoodto.setNumeroCasa(numero);
+		            AlunoDTO objAlunoDTO = new AlunoDTO();
+		            objAlunoDTO.setNome(nome);
+		            objAlunoDTO.setSobrenome(sobrenome);
+		            objAlunoDTO.setCpf(cpf);
+		            objAlunoDTO.setCelular(celular);
+		            objAlunoDTO.setEmail(email);
+		            objAlunoDTO.setBairro(bairro);
+		            objAlunoDTO.setRua(rua);
+		            objAlunoDTO.setNumeroCasa(numero);
 		            
 		            
 		            // Código para cadastrar o aluno
@@ -368,46 +386,26 @@ public class TelaPrincipal extends JFrame {
 		
 
 		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(290, 103, 410, 349);
+		scrollPane_1.setBounds(278, 25, 671, 397);
 		panel_aluno.add(scrollPane_1);
 		
-		table_1 = new JTable();
-		table_1.setEnabled(false);
-		table_1.setRowSelectionAllowed(false);
-		table_1.setShowHorizontalLines(false);
-		table_1.setModel(new DefaultTableModel(
+		table_alunos = new JTable();
+		table_alunos.setEnabled(false);
+		table_alunos.setRowSelectionAllowed(false);
+		table_alunos.setShowHorizontalLines(false);
+		table_alunos.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, "", null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
 			},
 			new String[] {
-				"Nome", "Sobrenome", "Curso", "Matricula", "CPF"
+				"ID", "Nome", "Sobrenome", "CPF", "Celular", "E-mail", "ID Curso"
 			}
 		));
-		scrollPane_1.setViewportView(table_1);
+		scrollPane_1.setViewportView(table_alunos);
 		
 		lblNewLabel_7 = new JLabel("Tabela de Alunos");
 		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_7.setBounds(441, 57, 170, 14);
+		lblNewLabel_7.setBounds(509, 0, 170, 14);
 		panel_aluno.add(lblNewLabel_7);
 		
 		comboCursoAluno = new JComboBox();
@@ -417,6 +415,15 @@ public class TelaPrincipal extends JFrame {
 		comboBoxAluno = new JComboBox();
 		comboBoxAluno.setBounds(86, 357, 170, 22);
 		panel_aluno.add(comboBoxAluno);
+		
+		JButton btnListarAlunos = new JButton("Listar");
+		btnListarAlunos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listarValoresAlunos();
+			}
+		});
+		btnListarAlunos.setBounds(568, 429, 89, 23);
+		panel_aluno.add(btnListarAlunos);
 
 		
 		JPanel panel_professor = new JPanel();

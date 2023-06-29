@@ -2,12 +2,12 @@ package dto;
 
 public class SalaDTO {
 
-	private String sala, corredor, andar;
+	private String nomeSala, corredor, andar;
 	private int idSala;
 
 	public SalaDTO(String andar, String corredor, String sala) {
 		
-		this.sala = sala;
+		this.nomeSala = sala;
 		this.corredor = corredor;
 		this.andar = andar;
 		
@@ -23,11 +23,11 @@ public class SalaDTO {
 	}
 
 	public String getSala() {
-		return sala;
+		return nomeSala;
 	}
 
 	public void setSala(String sala) {
-		this.sala = sala;
+		this.nomeSala = sala;
 	}
 
 	public String getCorredor() {
