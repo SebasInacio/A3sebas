@@ -98,14 +98,14 @@ public class TelaPrincipal extends JFrame {
 	private JScrollPane scrollPane_5;
 	private JLabel lblSelecioneOCurso_3;
 	private JLabel lblNewLabel;
-<<<<<<< HEAD
+
 	private JScrollPane scrollPane_1;
 	private JLabel lblNewLabel_7;
 	private JTable table_1;
 	private JComboBox comboCursoAluno;
-=======
+
 	private JComboBox comboBoxAluno;
->>>>>>> refs/remotes/origin/main
+
 	private JComboBox comboBoxProfessor;
 	private JLabel lblNumero_2;
 	private JLabel lblNumero_3;
@@ -366,7 +366,7 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel.setBounds(10, 361, 167, 14);
 		panel_aluno.add(lblNewLabel);
 		
-<<<<<<< HEAD
+
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(290, 103, 410, 349);
 		panel_aluno.add(scrollPane_1);
@@ -413,11 +413,11 @@ public class TelaPrincipal extends JFrame {
 		comboCursoAluno = new JComboBox();
 		comboCursoAluno.setBounds(86, 357, 170, 22);
 		panel_aluno.add(comboCursoAluno);
-=======
+
 		comboBoxAluno = new JComboBox();
 		comboBoxAluno.setBounds(86, 357, 170, 22);
 		panel_aluno.add(comboBoxAluno);
->>>>>>> refs/remotes/origin/main
+
 		
 		JPanel panel_professor = new JPanel();
 		tabbedPane.addTab("Professor", null, panel_professor, null);
