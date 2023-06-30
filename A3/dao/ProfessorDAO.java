@@ -14,7 +14,7 @@ public class ProfessorDAO {
 	PreparedStatement pstm;
 	ResultSet rs;
 
-	public void cadastrarProfessor(AlunoDTO objProfessorDTO) {
+	public void cadastrarProfessor(ProfessorDTO objProfessorDTO) {
 		Connection conn = new ConexaoDAO().conectaBD();
 		String sql = "INSERT INTO a3database.professores (nome_professor, sobrenome_professor, cpf_professor, celular_professor, email_professor, bairro_professor, rua_professor, numero_professor) VALUES (?, ?, ?, ?, ?, ?, ? ,? );" ;
 		
@@ -28,7 +28,7 @@ public class ProfessorDAO {
 			pstm.setString(5, objProfessorDTO.getEmail());
 			pstm.setString(6, objProfessorDTO.getBairro());
 			pstm.setString(7, objProfessorDTO.getRua());
-			pstm.setString(8, objProfessorDTO.getNumeroCasa());
+			pstm.setString(8, objProfessorDTO.getNumero());
 			
 			pstm.execute();
 			pstm.close();

@@ -5,6 +5,11 @@ public class TurmaDTO {
 	int numAlunos, idTurma, idCurso, idSala;
 	String nomeCurso;
 	
+	
+	public TurmaDTO() {
+		super();
+	}
+
 	public int getNumAlunos() {
 		return numAlunos;
 	}
